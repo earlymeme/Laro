@@ -1,6 +1,6 @@
 /**
  * Camera
- * 镜头的概念，用于控制同一场景中的背景移动
+ * 闀滃ご鐨勬蹇碉紝鐢ㄤ簬鎺у埗鍚屼竴鍦烘櫙涓殑鑳屾櫙绉诲姩
  */
 
 ;(function (win, undefined) {
@@ -14,7 +14,7 @@
         this.objects = [];
 
     }).methods({
-        //增加camera可控的物体或 layer
+        //澧炲姞camera鍙帶鐨勭墿浣撴垨 layer
         //{
         //	name: ,
         //	texture: ,

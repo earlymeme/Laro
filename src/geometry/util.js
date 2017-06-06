@@ -19,13 +19,13 @@ Laro.register('.geometry.util', function (La) {
         }
         return result;
     } 
-    // ·µ»Ø¼¸¸öÊıÖĞ×îĞ¡ÄÇ¸ö	
+    // è¿”å›å‡ ä¸ªæ•°ä¸­æœ€å°é‚£ä¸ª	
     this.min = Math.min;
 
-    // ·µ»Ø×î´óµÄÊı
+    // è¿”å›æœ€å¤§çš„æ•°
     this.max = Math.max;
 
-    // ·µ»ØÈı¸öÊıÖĞ¼äÄÇ¸ö
+    // è¿”å›ä¸‰ä¸ªæ•°ä¸­é—´é‚£ä¸ª
     this.clamp = function (arg) {
         var arr = toType(arg) == 'array' ? arg : slice.call(arguments, 0),
             _min = Math.min(arr[0], Math.min(arr[1], arr[2]));
@@ -39,7 +39,7 @@ Laro.register('.geometry.util', function (La) {
             return Math.min(arr[0], arr[1]);
         }
     };
-    // ·µ»ØÖ¸¶¨²åÖµÏµÊıµÄÁ½Êı²åÖµ
+    // è¿”å›æŒ‡å®šæ’å€¼ç³»æ•°çš„ä¸¤æ•°æ’å€¼
     this.lerp = function (from, to, t) {
         return from + t * (to - from);
     };

@@ -8,9 +8,9 @@ Laro.register('.world', function (La) {
         assert = La.err.assert,
         Rectf = La.geometry.Rectf;
 
-    // tiles ÊÇÒ»¸ölist
-    // °üº¬Ôª×é£¨imageW, x, y, centered, flipped£©
-    // *ÔİÊ±ÒªÇóÎª±ØĞë
+    // tiles æ˜¯ä¸€ä¸ªlist
+    // åŒ…å«å…ƒç»„ï¼ˆimageW, x, y, centered, flippedï¼‰
+    // *æš‚æ—¶è¦æ±‚ä¸ºå¿…é¡»
     var Layer = Class(function (tiles) {
         if (tiles != undefined) {
             this.tiles = tiles;
@@ -21,7 +21,7 @@ Laro.register('.world', function (La) {
         count: function () {
             return this.tiles.length / 5;
         },
-        // »ñÈ¡µ±Ç°layer Ôª×éÔÚlayers list µÄ²ÎÊıÀïµÄÊµ¼ÊÎ»ÖÃ
+        // è·å–å½“å‰layer å…ƒç»„åœ¨layers list çš„å‚æ•°é‡Œçš„å®é™…ä½ç½®
         offset: function (i) {
             return i * 5;
         }
@@ -29,12 +29,12 @@ Laro.register('.world', function (La) {
 
     /**
      * TileLayer
-     * µØÍ¼²ã
+     * åœ°å›¾å±‚
      * @inherit from Layer
-     * tiles @param ÓÃÓÚ×é³Étile µÄÔª×é
-     * indices @param {Array} ÓÃÓÚ±ê¼Ç±»·Ö³ÉÃ¿Ò»Ğ¡¿éµØÍ¼µÄÎ»ÖÃ
-     * sx @param {Number} ºáÏòtileµÄ¸öÊı
-     * sy @param {Number} ×İÏòtileµÄ¸öÊı
+     * tiles @param ç”¨äºç»„æˆtile çš„å…ƒç»„
+     * indices @param {Array} ç”¨äºæ ‡è®°è¢«åˆ†æˆæ¯ä¸€å°å—åœ°å›¾çš„ä½ç½®
+     * sx @param {Number} æ¨ªå‘tileçš„ä¸ªæ•°
+     * sy @param {Number} çºµå‘tileçš„ä¸ªæ•°
      */
     var TileLayer = Layer.extend(function (tiles, indices, sx, sy) {
         assert(indices.length == sx * sy);
@@ -42,17 +42,17 @@ Laro.register('.world', function (La) {
         this.sx = sx;
         this.sy = sy;
     }).methods({
-        // »ñÈ¡Ö¸¶¨Î»ÖÃtile
-        // i, j ¶¼ÊÇ´Ó0 ¿ªÊ¼
+        // è·å–æŒ‡å®šä½ç½®tile
+        // i, j éƒ½æ˜¯ä»0 å¼€å§‹
         index : function (i, j) {
             return this.indices[i + this.sx * j];
         },
-        // »ñÈ¡¶ÔÓ¦tileµÄÅäÖÃµÄÎ»ÖÃ
+        // è·å–å¯¹åº”tileçš„é…ç½®çš„ä½ç½®
         tile: function (i, j) {
             var ind = j == null ? i : this.index(i, j);
             return ind == -1 ? -1 : ind * 5;
         },
-        // »ñÈ¡ÉÏÒ»¸öÖ¸¶¨Î»ÖÃµÄÉÏÒ»¸ötile
+        // è·å–ä¸Šä¸€ä¸ªæŒ‡å®šä½ç½®çš„ä¸Šä¸€ä¸ªtile
         previous: function (i, j) {
             if (i === 0) {
                 return j == 0 ? -1 : this.index(this.sx - 1, j - 1)
@@ -64,10 +64,10 @@ Laro.register('.world', function (La) {
 
     /**
      * SpriteLayer
-     * ¾«Áé²ã
+     * ç²¾çµå±‚
      * @inherit from Layer
-     * tiles @param {Array} tile Ôª×é×é³ÉµÄlist
-     * rectangles @param {Rect} ¾ØĞÎ±ß¿ò
+     * tiles @param {Array} tile å…ƒç»„ç»„æˆçš„list
+     * rectangles @param {Rect} çŸ©å½¢è¾¹æ¡†
      * rect @param {Rect}
      */
     var SpriteLayer = Layer.extend(function (tiles, rectangles, rect) {

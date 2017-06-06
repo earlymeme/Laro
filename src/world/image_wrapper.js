@@ -1,6 +1,6 @@
 /**
  * Image Wrapper
- * ¸øÍ¼Æ¬¼ÓÉÏ°ü×°£¬Ôö¼ÓÒ»Ğ©¶îÍâµÄ²ÎÊıÀ´Ê¹ÓÃ
+ * ç»™å›¾ç‰‡åŠ ä¸ŠåŒ…è£…ï¼Œå¢åŠ ä¸€äº›é¢å¤–çš„å‚æ•°æ¥ä½¿ç”¨
  */
 
 Laro.register('.texture', function (La) {
@@ -8,16 +8,16 @@ Laro.register('.texture', function (La) {
         Class = La.base.Class || la.Class;
 
     /**
-     * ¶¨ÒåÒ»¸öÍ¼Æ¬µÄ²¿·ÖÇøÓò
+     * å®šä¹‰ä¸€ä¸ªå›¾ç‰‡çš„éƒ¨åˆ†åŒºåŸŸ
      * param {Image} htmlImageElement
-     * param {number} ËùÒªÊ¹ÓÃµÄregionµÄx×ø±ê
-     * param {number} regionµÄy×ø±ê
-     * param {number} region ¿í
-     * param {number} region ¸ß
-     * param {number} x ·½ÏòpaddingÖµ
-     * param {number} y ·½Ïòpadding
-     * param {number} ËùÒªÊ¹ÓÃÕâ¸öÇøÓòµÄÄ¿±ê¿í¶È
-     * param {number} Ä¿±ê¸ß¶È
+     * param {number} æ‰€è¦ä½¿ç”¨çš„regionçš„xåæ ‡
+     * param {number} regionçš„yåæ ‡
+     * param {number} region å®½
+     * param {number} region é«˜
+     * param {number} x æ–¹å‘paddingå€¼
+     * param {number} y æ–¹å‘padding
+     * param {number} æ‰€è¦ä½¿ç”¨è¿™ä¸ªåŒºåŸŸçš„ç›®æ ‡å®½åº¦
+     * param {number} ç›®æ ‡é«˜åº¦
      */
     var ImageRegion = Class(function (image, x, y, width, height, offsetX, offsetY, textureW, textureH) {
         assert(image instanceof HTMLImageElement || image instanceof HTMLCanvasElement, 'invalid image');

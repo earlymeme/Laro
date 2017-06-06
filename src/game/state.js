@@ -7,7 +7,7 @@ Laro.register('.game', function (La) {
     var Class = La.Class || La.base.Class,
         toType = La.toType;
 
-    // ÒÔÏÂstateÀàµÄ·½·¨ ¶¼ĞèÒª ×ÓÀàÖØĞ´ºóµ÷ÓÃ¡£
+    // ä»¥ä¸‹stateç±»çš„æ–¹æ³• éƒ½éœ€è¦ å­ç±»é‡å†™åè°ƒç”¨ã€‚
     var BaseState = Class(function (host, fsm, id) {
         if (host == undefined || toType(host) != 'object') return;
         this.host = host;

@@ -10,7 +10,7 @@ Laro.register('.geometry', function (La) {
         Point2 = La.geometry.Point2;
 
     var Vector2 = Point2.extend({
-        // Ê¸Á¿µã»ı
+        // çŸ¢é‡ç‚¹ç§¯
         dot: function (v) {
             return this.x * v.x + this.y * v.y;
         },
@@ -21,7 +21,7 @@ Laro.register('.geometry', function (La) {
         length: function () {
             return this.magnitude();
         },
-        // µ¥Î»»¯
+        // å•ä½åŒ–
         normalize: function () {
             var inv = 1 / this.length();
             this.x *= inv;

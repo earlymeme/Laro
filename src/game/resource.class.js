@@ -9,9 +9,9 @@ Laro.register('.game', function (La) {
         Pixel32 = La.geometry.Pixel32;
 
     /**
-     * µØÍ¼¼¯×ÊÔ´
-     * ¼¯ºÏÍ¨¹ıÓÎÏ·µÄjsonÎÄ¼şÊä³öµÄ×ÊÔ´ÁĞ±í
-     * @param obj {Object} ÅäÖÃjson ¶ÔÏó
+     * åœ°å›¾é›†èµ„æº
+     * é›†åˆé€šè¿‡æ¸¸æˆçš„jsonæ–‡ä»¶è¾“å‡ºçš„èµ„æºåˆ—è¡¨
+     * @param obj {Object} é…ç½®json å¯¹è±¡
      */
     var Atlas = Class(function (obj) {
         this.name = obj.name;
@@ -45,10 +45,10 @@ Laro.register('.game', function (La) {
     /**
      * ResourceLoader
      * {Class}
-     * Ö÷ÒªÊÇimageµÄloader
+     * ä¸»è¦æ˜¯imageçš„loader
      */
     var ResourceLoader = Class(function (path) {
-        // imagePath ×ÊÔ´Ö÷Â·¾¶£¬¿ÉÅäÖÃ
+        // imagePath èµ„æºä¸»è·¯å¾„ï¼Œå¯é…ç½®
         this.imagePath = path || 'resources/';
         this.basePath = this.imagePath;
         this.loadedImages = {};	
@@ -56,7 +56,7 @@ Laro.register('.game', function (La) {
 
     }).methods({
 
-        // ¼ÓÔØÒ»ÕÅÍ¼Æ¬
+        // åŠ è½½ä¸€å¼ å›¾ç‰‡
         loadImage: function (fileName) {
             var image = this.loadedImages[fileName];
             if (!!image) {
@@ -68,7 +68,7 @@ Laro.register('.game', function (La) {
             this.loadedImages[fileName] = image;
             return image;
         },
-        // Ô¤¼ÓÔØ¶àÕÅÍ¼Æ¬
+        // é¢„åŠ è½½å¤šå¼ å›¾ç‰‡
         preloadImages: function (fileNames, callback) {
             var imagesLoaded = 0,
                 _fileNames = [],
@@ -90,7 +90,7 @@ Laro.register('.game', function (La) {
             };
             var imageLoaded = function () {
                 imagesLoaded ++;
-                // ´«Ò»¸ö ÒÑ¼ÓÔØ ºÍ ×ÊÔ´×ÜÊıµÄ±ÈÀı½øÈ¥£¬ÒÔ±ã¼ÆËã¼ÓÔØ½ø¶È
+                // ä¼ ä¸€ä¸ª å·²åŠ è½½ å’Œ èµ„æºæ€»æ•°çš„æ¯”ä¾‹è¿›å»ï¼Œä»¥ä¾¿è®¡ç®—åŠ è½½è¿›åº¦
                 callCallback(imagesLoaded/length);
             };
             var imageError = function () {
@@ -114,7 +114,7 @@ Laro.register('.game', function (La) {
 
             callCallback(imagesLoaded / length);
         },
-        // Ô¤¼ÓÔØ¶à¸ö×ÊÔ´£¬°üÀ¨Í¼Æ¬ºÍÒôÀÖµÈ
+        // é¢„åŠ è½½å¤šä¸ªèµ„æºï¼ŒåŒ…æ‹¬å›¾ç‰‡å’ŒéŸ³ä¹ç­‰
         preload: function (files, callback) {
             var fileLoaded = 0,
                 _fileNames = [],
@@ -140,7 +140,7 @@ Laro.register('.game', function (La) {
             };
 
             for (var i = 0; i < length; i ++) {
-                // ÏÈ¼ì²éÊÇ·ñÒÑ¾­¼ÓÔØ
+                // å…ˆæ£€æŸ¥æ˜¯å¦å·²ç»åŠ è½½
                 var filename = _fileNames[i];
                 if (isImage(filename)) {
                     var image = this.loadedImages[filename];
@@ -167,7 +167,7 @@ Laro.register('.game', function (La) {
             callCallback(fileLoaded/length);
         }
     }).statics({
-        //»ñÈ¡µ±Ç°ÊµÀı
+        //è·å–å½“å‰å®ä¾‹
         getInstance: function () {
             if (ResourceLoader.instance === null) {
                 ResourceLoader.instance = new ResourceLoader(this.imagePath);
@@ -202,9 +202,9 @@ Laro.register('.game', function (La) {
             return ret.join(' ');
         },
         /**
-         * Éú³ÉÒ»¸öÏÔÊ¾ÎÄ×ÖµÄcanvas
+         * ç”Ÿæˆä¸€ä¸ªæ˜¾ç¤ºæ–‡å­—çš„canvas
          * @param text {String}
-         * @param wrapWidth {Number} Ò»ĞĞÎÄ×Ö¿í¶È£¬³¬¹ıÔò»»ĞĞ
+         * @param wrapWidth {Number} ä¸€è¡Œæ–‡å­—å®½åº¦ï¼Œè¶…è¿‡åˆ™æ¢è¡Œ
          */
         generateCanvas: function (text, wrapWidth) {
             var canvas = document.createElement('canvas'),
@@ -214,7 +214,7 @@ Laro.register('.game', function (La) {
             var outline = this.outline * 2;
             if (wrapWidth != undefined) {
                 text = this.wrapText(c, text, wrapWidth);
-                canvas.width = c.measureText(text).width + 8 + outline * 2; // Ä¬ÈÏµÄÎÄ×Ö¶¼ÒªÓĞÒ»¶¨µÄmargin
+                canvas.width = c.measureText(text).width + 8 + outline * 2; // é»˜è®¤çš„æ–‡å­—éƒ½è¦æœ‰ä¸€å®šçš„margin
                 canvas.height = (this.size + outline*4) * text.split('\n').length;
             } else {
                 canvas.width = c.measureText(text).width + 8 + outline * 2;

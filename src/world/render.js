@@ -52,40 +52,40 @@ Laro.register('.world', function (La) {
         },
 
         /**
-         * ÒÔÏÂÎ´¶¨ÒåµÄ¿Õº¯Êı»áÔÚ¼Ì³ĞÓÚRenderµÄ×ÓÀàÖĞ¶¨Òå
+         * ä»¥ä¸‹æœªå®šä¹‰çš„ç©ºå‡½æ•°ä¼šåœ¨ç»§æ‰¿äºRenderçš„å­ç±»ä¸­å®šä¹‰
          * 
          */
 
         drawLine: function (x0, y0, x1, y1, color) {  },
         drawCircle: function (x, y, r, color) {},
         drawRect: function (x0, y0, x1, y1, color) {},
-        //ÕÛÏß
+        //æŠ˜çº¿
         drawQuad: function (verts, cols) {
 
         },
-        // Èı½ÇĞÎ
+        // ä¸‰è§’å½¢
         drawTris: function (verts, cols) {},
-        // ´ÓÉÏÏòÏÂ½¥±äµÄrect
+        // ä»ä¸Šå‘ä¸‹æ¸å˜çš„rect
         drawFilledRect: function (x0, y0, x1, y1, c1, c2) {},
-        // ½¥±äÈı½ÇĞÎ
+        // æ¸å˜ä¸‰è§’å½¢
         drawFilledTris: function (verts, cols) {},
         // image
         // @param imgW {ImageWapper}
-        // @param x {Number} ×ø±ê 0 µ½ width
-        // @param y {Number} ×ø±ê 0 µ½Height
-        // @param angle {Number} Í¼Æ¬Ğı×ª½Ç¶È
-        // @param centered {Boolean} ÊÇ·ñ¾ÓÖĞ
-        // @param alpha £ûNumber£ı0-255 Í¸Ã÷¶È¡£Ä¬ÈÏ255
-        // @param tint {Pixel32} ÏñËØ»ìºÏ
-        // @param flipped {Boolean} ÊÇ·ñÑØy Öá·­×ª
+        // @param x {Number} åæ ‡ 0 åˆ° width
+        // @param y {Number} åæ ‡ 0 åˆ°Height
+        // @param angle {Number} å›¾ç‰‡æ—‹è½¬è§’åº¦
+        // @param centered {Boolean} æ˜¯å¦å±…ä¸­
+        // @param alpha ï½›Numberï½0-255 é€æ˜åº¦ã€‚é»˜è®¤255
+        // @param tint {Pixel32} åƒç´ æ··åˆ
+        // @param flipped {Boolean} æ˜¯å¦æ²¿y è½´ç¿»è½¬
         drawImage: function (imgW, x, y, angle, centered, alpha, tint, flipped) {},
         /**
-         * ÔÚÈı½ÇĞÎÇøÓò»­Í¼
+         * åœ¨ä¸‰è§’å½¢åŒºåŸŸç”»å›¾
          *
          * @param imgW {ImageWapper}
-         * @param xy {Array} Èı½ÇĞÎÈı¸ö¶¥µãµÄ×ø±êlist
-         * @param uv {Array} Èı½ÇĞÎtexture µÄ×ø±êlist
-         * @param tint {Pixel32} 32Î»ÏñËØµã»ìºÏ
+         * @param xy {Array} ä¸‰è§’å½¢ä¸‰ä¸ªé¡¶ç‚¹çš„åæ ‡list
+         * @param uv {Array} ä¸‰è§’å½¢texture çš„åæ ‡list
+         * @param tint {Pixel32} 32ä½åƒç´ ç‚¹æ··åˆ
          */
         drawTriangleImage: function (imgW, xy, uv, tint) {},
         /**
@@ -103,7 +103,7 @@ Laro.register('.world', function (La) {
          */		
         drawParticle: function (imgW, x, y, angle, scaleX, scaleY, alpha, color, additive) {},
         /**
-         * Ò»ÏµÁĞÍ¼Æ¬£¬µ±ĞèÒªÆ½ÆÌµÄÍ¼Æ¬»òÕß¿ÉÒÔÓÃÍ¬Ò»ÕÅÍ¼Æ¬µÄÊ±ºò¡£
+         * ä¸€ç³»åˆ—å›¾ç‰‡ï¼Œå½“éœ€è¦å¹³é“ºçš„å›¾ç‰‡æˆ–è€…å¯ä»¥ç”¨åŒä¸€å¼ å›¾ç‰‡çš„æ—¶å€™ã€‚
          *
          * @param imgW {ImageWapper}
          * @param x {Number} 0..width
@@ -136,11 +136,11 @@ Laro.register('.world', function (La) {
         drawLayer: function (layer, ox, oy, x, y, nx, ny) {
             var i, j, img, ix, iy, centered, flipped, offset;
             if (layer instanceof Layer) {
-                // draw ËùÓĞĞĞ
+                // draw æ‰€æœ‰è¡Œ
                 for (j = y; j < y + ny; j ++) {
                     var previous = layer.previous(x, j),
                         last = layer.index(x + nx - 1, j);
-                    // »­ËùÓĞÁĞ
+                    // ç”»æ‰€æœ‰åˆ—
                     var imgW, ix, iy, centered, flipped, offset;
                     for (i = previous + 1, offset = i*5; i <= last; i ++) {
                         imgW = layer.tiles[offset++];
@@ -188,7 +188,7 @@ Laro.register('.world', function (La) {
 
         /**
          * clip methods
-         * ¼ô²Ã
+         * å‰ªè£
          */
         pushClipRect: function (r) {
             assert(r instanceof Rectf);
@@ -198,7 +198,7 @@ Laro.register('.world', function (La) {
             assert(this.clips.length > 0, 'no clip to pop');
             return this.clips.pop();
         },
-        // »ñÈ¡µ±Ç°Æğ×÷ÓÃµÄclip£¬Í¨³£ÊÇ×îºóÒ»¸ö
+        // è·å–å½“å‰èµ·ä½œç”¨çš„clipï¼Œé€šå¸¸æ˜¯æœ€åä¸€ä¸ª
         getClipRect: function () {
             if (this.clips.length == 0) {
                 return this.defaultClip;

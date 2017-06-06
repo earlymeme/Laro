@@ -1,6 +1,6 @@
 /**
  * Class Rectf
- * ¶¨ÒåÒ»¸ö¾ØĞÎ
+ * å®šä¹‰ä¸€ä¸ªçŸ©å½¢
  */
 
 Laro.register('.geometry', function (La) {
@@ -25,11 +25,11 @@ Laro.register('.geometry', function (La) {
         this.width = x1 - x0 + 1;
         this.height = y1 - y0 + 1;
     }).methods({
-        // ¾ØĞÎÖĞĞÄ£¬·µ»ØÒ»¸öÏòÁ¿
+        // çŸ©å½¢ä¸­å¿ƒï¼Œè¿”å›ä¸€ä¸ªå‘é‡
         center: function () {
             return new Vector2((this.x0 + this.x1 + 1)/2, (this.y0 + this.y1 + 1)/2);
         },
-        // ÑØÖ¸¶¨Öá·­×ª
+        // æ²¿æŒ‡å®šè½´ç¿»è½¬
         invertBy: function (f) {
             f = f || 'x';
             if (f == 'x') {
@@ -38,7 +38,7 @@ Laro.register('.geometry', function (La) {
                 return new Rectf(this.x0, -this.y1, this.x1, -this.y0);
             }
         },
-        // ÒÆ¶¯
+        // ç§»åŠ¨
         offset: function (x, y) {
             if (x instanceof Vector2 || x instanceof Point2) {
                 x = x.x;
@@ -46,7 +46,7 @@ Laro.register('.geometry', function (La) {
             }
             return new Rectf(this.x0 + x, this.y0 + y, this.x1 + x, this.y1 + y);
         },
-        // À©Õ¹¾ØĞÎ
+        // æ‰©å±•çŸ©å½¢
         expand: function (w, h) {
             if (w instanceof Vector2 || w instanceof Point2) {
                 w = w.x;
@@ -54,32 +54,32 @@ Laro.register('.geometry', function (La) {
             }
             return new Rectf(this.x0 - w, this.y0 - h, this.x1 + w, this.y1 + h);
         },
-        // ¼ì²âÊÇ·ñ°üº¬
-        // Ö§³Ö ¶Ôµã£¬ ÏòÁ¿£¬ ¾ØĞÎµÄ¼ì²â
+        // æ£€æµ‹æ˜¯å¦åŒ…å«
+        // æ”¯æŒ å¯¹ç‚¹ï¼Œ å‘é‡ï¼Œ çŸ©å½¢çš„æ£€æµ‹
         contains: function (x, y) {
             var o = x;
             if (x instanceof Vector2 || x instanceof Point2) {
-                // ¶ÔÖ¸¶¨ÏòÁ¿»òµãµÄ°üº¬¹ØÏµ
+                // å¯¹æŒ‡å®šå‘é‡æˆ–ç‚¹çš„åŒ…å«å…³ç³»
                 return this.x0 <= o.x
                     && this.y0 <= o.y
                     && this.x1 >= o.x
                     && this.y1 >= o.y;
             } else if (x instanceof Rectf) {
-                // ¾ØĞÎ°üº¬¹ØÏµ¼ì²â
+                // çŸ©å½¢åŒ…å«å…³ç³»æ£€æµ‹
                 return this.x0 <= o.x0
                     && this.y0 <= o.y0
                     && this.x1 >= o.x1
                     && this.y1 >= o.y1;
             } else {
-                // ×Ô¶¨Òå x y ×ø±êµÄµã
+                // è‡ªå®šä¹‰ x y åæ ‡çš„ç‚¹
                 return this.x0 <= x
                     && this.y0 <= y
                     && this.x1 >= x
                     && this.y1 >= y;
             }
         },
-        // ½»µşÅĞ¶Ï
-        // Ö§³Ö Ô²ĞÎ£¬ ¾ØĞÎ
+        // äº¤å åˆ¤æ–­
+        // æ”¯æŒ åœ†å½¢ï¼Œ çŸ©å½¢
         overlaps: function (shape, ox, oy) {
             var r, x, y;
             if (ox == undefined && oy == undefined) {
@@ -92,7 +92,7 @@ Laro.register('.geometry', function (La) {
 
             if (shape instanceof Circle) {
                 r = shape.r;
-                // Ô²ĞÄÎ»ÖÃ
+                // åœ†å¿ƒä½ç½®
                 x = shape.c.x + ox;
                 y = shape.c.y + oy;
                 return this.x0 - r <= x
@@ -105,7 +105,7 @@ Laro.register('.geometry', function (La) {
                 // TODO
             }
         },
-        // ÓÃ¾ØĞÎÈ¥¼ô²ÃÒ»¸öÏòÁ¿
+        // ç”¨çŸ©å½¢å»å‰ªè£ä¸€ä¸ªå‘é‡
         clip: function (v) {
             return new Vector2(Math.max(this.x0, Math.min(this.x1, v.x)), Math.max(this.y0, Math.min(this.y1, v.y)));	   
         },

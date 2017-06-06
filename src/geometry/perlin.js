@@ -1,6 +1,6 @@
 /**
  * Perlin
- * 噪声花边
+ * 鍣０鑺辫竟
  * @require [global, point2, vector2, geometry.util]
  */
 
@@ -27,7 +27,7 @@ Laro.register('perlin', function (La) {
 
         return La.geometry.util.lerp(u, v, sx);
     };
-    // 三次曲线，可调整
+    // 涓夋鏇茬嚎锛屽彲璋冩暣
     this.s_curve = function (t) {
         return t * t * (3 - 2*t);
     };

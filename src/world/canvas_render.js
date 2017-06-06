@@ -66,8 +66,8 @@ Laro.register('.world', function (La) {
             this.context.arc(x, y, r, 0, Math.PI*2, true);
             this.context.stroke();
         },
-        // Ìî³äÑÕÉ«µÄ¾ØĞÎ
-        // Èç¹ûÖ¸¶¨Á½¸öÑÕÉ«£¬ÔòÓÉÉÏÏòÏÂ½¥±ä
+        // å¡«å……é¢œè‰²çš„çŸ©å½¢
+        // å¦‚æœæŒ‡å®šä¸¤ä¸ªé¢œè‰²ï¼Œåˆ™ç”±ä¸Šå‘ä¸‹æ¸å˜
         drawFilledRect: function (x0, y0, x1, y1, color, color2) {
             if (this.calls ++ > this.maxCalls) return;
             this.context.save();
@@ -107,7 +107,7 @@ Laro.register('.world', function (La) {
             }
 
             if (hFlipped) {
-                //ºáÏò£¬ÑØyÖá·­×ª
+                //æ¨ªå‘ï¼Œæ²¿yè½´ç¿»è½¬
                 x = -x;
                 this.context.scale(-1, 1);
                 this.context.translate(-imgW.textureWidth, 0);
@@ -122,10 +122,10 @@ Laro.register('.world', function (La) {
                 this.drawEMBImage(imgW, x, y, angle !== 0, this.context);
             }
 
-            //Í¼Æ¬±ßÔµ»ìºÏÉ«
+            //å›¾ç‰‡è¾¹ç¼˜æ··åˆè‰²
             if (!!tint && tint.a != 0) {
-                //ÔÚsecondCanvasÉÏ»­image£¬¼ÓÉÏalphaÍ¨µÀ
-                //ÔÙ»­Ò»¸ö¾ØĞÎ¸²¸ÇÔÚÉÏÃæÓÃtintµÄcolorÀ´Ä£Äâ±ßÔµÄ£ºıĞ§¹û
+                //åœ¨secondCanvasä¸Šç”»imageï¼ŒåŠ ä¸Šalphaé€šé“
+                //å†ç”»ä¸€ä¸ªçŸ©å½¢è¦†ç›–åœ¨ä¸Šé¢ç”¨tintçš„coloræ¥æ¨¡æ‹Ÿè¾¹ç¼˜æ¨¡ç³Šæ•ˆæœ
                 this.secondContext.clearRect(0, 0, this.secondCanvas.width, this.secondCanvas.height);
                 if (this.secondCanvas.width != imgW.width) {
                     this.secondCanvas.width = imgW.width;
@@ -137,7 +137,7 @@ Laro.register('.world', function (La) {
 
                 this.drawEMBImage(imgW, 0, 0, false, this.secondContext);
 
-                // ±£ÁôÏà½»²¿·Ö
+                // ä¿ç•™ç›¸äº¤éƒ¨åˆ†
                 this.secondContext.globalCompositeOperation = 'source-in';
                 this.secondContext.globalAlpha = tint.a > 1 ? tint.a/255 : tint.a;
                 this.secondContext.fillStyle = tint.rgbString();
@@ -163,7 +163,7 @@ Laro.register('.world', function (La) {
                 var ys = this.scale(y);
                 var xe = this.scale(x + imgW.width - xs);
                 var ye = this.scale(y + imgW.height - ys);
-                // drawImage ºóÃæ8¸ö¹ØÓÚÎ»ÖÃµÄ²ÎÊı£¬Ç°4¸öÊÇÕë¶ÔimageµÄ£¬ºóÃæËÄ¸öÊÇÕë¶ÔcanvasµÄ
+                // drawImage åé¢8ä¸ªå…³äºä½ç½®çš„å‚æ•°ï¼Œå‰4ä¸ªæ˜¯é’ˆå¯¹imageçš„ï¼Œåé¢å››ä¸ªæ˜¯é’ˆå¯¹canvasçš„
                 context.drawImage(imgW.image, imgW.x, imgW.y, imgW.width, imgW.height, xs-x, ys-y, xe, ye);
             } else {
                 context.drawImage(imgW.image, imgW.x, imgW.y, imgW.width, imgW.height, 0, 0, imgW.width, imgW.height);
@@ -180,13 +180,13 @@ Laro.register('.world', function (La) {
             this.context.restore();
         },
         // clear canvas
-        // Èç¹ûÖ¸¶¨ÁËcolor£¬ÔòÔÚclear»­²¼Ö®ºó¼ÓÉÏÑÕÉ«
+        // å¦‚æœæŒ‡å®šäº†colorï¼Œåˆ™åœ¨clearç”»å¸ƒä¹‹ååŠ ä¸Šé¢œè‰²
         clear: function (color) {
             this.calls = 0;
             this.context.clearRect(0, 0, this.canvas.width/this.scaleFactor, this.canvas.height/this.scaleFactor);
             !!color && this.drawFilledRect(0, 0, this.canvas.width/this.scaleFactor, this.canvas.height/this.scaleFactor, color.toString());
         },
-        // Õë¶Ô»­²¼ÉÏÒÑ¾­·ÖºÃµÄ¸ñ×Ó »­Ò»ÏµÁĞµÄ image£¨Æ½ÆÌÆ´½Ó£©
+        // é’ˆå¯¹ç”»å¸ƒä¸Šå·²ç»åˆ†å¥½çš„æ ¼å­ ç”»ä¸€ç³»åˆ—çš„ imageï¼ˆå¹³é“ºæ‹¼æ¥ï¼‰
         drawTilingImage: function (imgW, x, y, htiles, vtiles, alpha) {
             alpha = alpha == undefined ? 1 : alpha;
             this.context.save();
@@ -205,8 +205,8 @@ Laro.register('.world', function (La) {
             }
             this.context.restore();
         },
-        // »­n±ßĞÎ
-        // @param verts {Array} 2n¸öÔªËØÊı×é£¬·Ö±ğÊÇn¸öµãµÄxy×ø±ê
+        // ç”»nè¾¹å½¢
+        // @param verts {Array} 2nä¸ªå…ƒç´ æ•°ç»„ï¼Œåˆ†åˆ«æ˜¯nä¸ªç‚¹çš„xyåæ ‡
         drawQuad: function (verts, color) {
             var i2 = verts.length - 2;
             for (var i = 0; i < verts.length; i += 2) {
@@ -217,8 +217,8 @@ Laro.register('.world', function (La) {
         drawPoly: function (verts, color) {
             this.drawQuad(verts, color);		  
         },
-        // n¸öÈı½ÇĞÎ
-        // @param verts {Array} 6n¸öÔªËØÊı×é£¬n¸öÈı½ÇĞÎµÄ3¸öµãµÄx,y×ø±ê
+        // nä¸ªä¸‰è§’å½¢
+        // @param verts {Array} 6nä¸ªå…ƒç´ æ•°ç»„ï¼Œnä¸ªä¸‰è§’å½¢çš„3ä¸ªç‚¹çš„x,yåæ ‡
         drawTris: function (verts, color) {
             assert(verts.length%6 !== 0, 'invalid points number');
             var n = verts.length / 6,
@@ -236,10 +236,10 @@ Laro.register('.world', function (La) {
             this.context.fillStyle = color.toString();
             this.context.fillRect(0, 0, this.canvas.width/this.scaleFactor, this.canvas.height/this.scaleFactor);
         },
-        // ´¿ÎÄ±¾
+        // çº¯æ–‡æœ¬
         drawSystemText: function (txt, x, y, color) {
             if (color instanceof La.Font) {
-                // Èç¹ûÊÇÒÔFont Class ±ê×¼µÄ×ÖÌåÑùÊ½
+                // å¦‚æœæ˜¯ä»¥Font Class æ ‡å‡†çš„å­—ä½“æ ·å¼
                 this.context.font = color.getFont();
                 this.context.fillStyle = color.baseColor.toString();
                 this.context.textBaseline = 'middle';
@@ -254,7 +254,7 @@ Laro.register('.world', function (La) {
                 this.context.fillText(txt, x, y);
 
             } else {
-                // ¼òµ¥µÄÉèÖÃ¸öÑÕÉ«
+                // ç®€å•çš„è®¾ç½®ä¸ªé¢œè‰²
                 this.context.textBaseline = 'middle';
                 this.context.textAlign = 'left';
                 this.context.fillStyle = color.toString();
@@ -321,7 +321,7 @@ Laro.register('.world', function (La) {
                 this.context.scale(scaleX, scaleY);
             }
             if (additive) {
-                // Ïà½»´¦ÑÕÉ«ÖĞºÍ
+                // ç›¸äº¤å¤„é¢œè‰²ä¸­å’Œ
                 this.context.globalCompositeOperation = 'lighter';
             }
             this.drawImage(img, 0, 0, angle, true, alpha, null, false);

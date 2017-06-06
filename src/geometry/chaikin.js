@@ -1,6 +1,6 @@
 /**
  * Chaikin
- * ÇòÃæ²åÖµÇúÏßËã·¨
+ * çƒé¢æ’å€¼æ›²çº¿ç®—æ³•
  * @require [global, geometry.point2, geometry.vector2]
  */
 
@@ -14,25 +14,25 @@ Laro.register('.geometry.chaikin', function (La) {
         if (handles.length) {
             do {
                 var numHandles = handles.length;
-                // µÚÒ»¸öµã
+                // ç¬¬ä¸€ä¸ªç‚¹
                 handles.push(new Point2(handles[0].x, handles[0].y));
 
                 for (var i = 0; i < numHandles - 1; ++i) {
-                    // Ã¿´ÎÄÃ³öÁ½¸öµã
+                    // æ¯æ¬¡æ‹¿å‡ºä¸¤ä¸ªç‚¹
                     var p0 = handles[i];
                     var p1 = handles[i + 1];
 
-                    // ¸ù¾İÁ½¸öÔ­Ê¼µã´´½¨Á½¸öĞÂµã£¬×ö²åÖµ
+                    // æ ¹æ®ä¸¤ä¸ªåŸå§‹ç‚¹åˆ›å»ºä¸¤ä¸ªæ–°ç‚¹ï¼Œåšæ’å€¼
                     var Q = new Point2(0.75 * p0.x + 0.25 * p1.x, 0.75 * p0.y + 0.25 * p1.y);
                     var R = new Point2(0.25 * p0.x + 0.75 * p1.x, 0.25 * p0.y + 0.75 * p1.y);
 
                     handles.push(Q);
                     handles.push(R);
                 }
-                // ×îºóÒ»¸öµê
+                // æœ€åä¸€ä¸ªåº—
                 handles.push(new Point2(handles[numHandles - 1].x, handles[numHandles - 1].y));
 
-                // ¸üĞÂÊı×é
+                // æ›´æ–°æ•°ç»„
                 for (var i = 0; i < numHandles; ++i)
                     handles.shift();
                 //handles.shift(numHandles);
@@ -40,7 +40,7 @@ Laro.register('.geometry.chaikin', function (La) {
         }
     };
 
-    // »ñÈ¡¶àµã¼ä¾à
+    // è·å–å¤šç‚¹é—´è·
     this.getLength = function (points) {
         var len = 0;
         var diff = null;
@@ -51,7 +51,7 @@ Laro.register('.geometry.chaikin', function (La) {
         return len;
     };
 
-    // ¸ù¾İ³¤¶È»ñÈ¡µã
+    // æ ¹æ®é•¿åº¦è·å–ç‚¹
     this.getPointAtLength = function (points, len) {
         if (points.length === 0) { return new Point2(0, 0); }
         if (points.length === 1) { return points[0]; }

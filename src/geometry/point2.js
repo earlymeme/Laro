@@ -8,17 +8,17 @@ Laro.register('.geometry', function (La) {
     var self = this,
         Class = La.base.Class;
 
-    // ¶þÎ¬µã
+    // äºŒç»´ç‚¹
     var Point2 = Class({
         initialize: function (x, y) {
             this.x = x;
             this.y = y;
         },
-        // x, y Æ½·½ºÍ
+        // x, y å¹³æ–¹å’Œ
         magnitudeSquared: function () {
             return this.x * this.x + this.y * this.y;
         },
-        // Æ½·½ºÍ ¸ù
+        // å¹³æ–¹å’Œ æ ¹
         magnitude: function () {
             return Math.sqrt(this.magnitudeSquared());
         },
